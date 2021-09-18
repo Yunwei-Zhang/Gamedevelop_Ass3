@@ -50,3 +50,6 @@ TagManager:
   - name: Pallet
     uniqueID: 527040129
     locked: 0
+  - name: Pac-man
+    uniqueID: 3621720433
+    locked: 0
