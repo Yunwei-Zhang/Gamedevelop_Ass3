@@ -17,7 +17,7 @@ public class Tweener : MonoBehaviour
     {
         
         if(tween!=null){ 
-            tween.Target.RotateAround(tween.RotateTarget.position, -tween.Target.forward, 0.3f);
+            tween.Target.RotateAround(tween.RotateTarget.position, -tween.Target.forward, 0.1f);
             if(UpdateOnce){
                 tween.TargetaudioSource.Play();
                 UpdateOnce = false;

@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 75f5754e23f35694d8d955b45298427b
+guid: df0c01b6ba493a54c8e66b70d0d3d9fb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4479250409046926904
-    second: Pallet_Power Flash_0
+      213: 3763752930381237044
+    second: New Piskel (2)_0
   - first:
-      213: 5858777193104948027
-    second: Pallet_Power Flash_1
+      213: -445332791505162358
+    second: New Piskel (2)_1
   - first:
-      213: 6223295034190725244
-    second: Pallet_Power Flash_2
+      213: 109718205546589128
+    second: New Piskel (2)_2
   - first:
-      213: -3466288483676865411
-    second: Pallet_Power Flash_3
+      213: -8637498362619983186
+    second: New Piskel (2)_3
   - first:
-      213: -8709978179647062986
-    second: Pallet_Power Flash_4
+      213: -1639124903628890771
+    second: New Piskel (2)_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,7 +118,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pallet_Power Flash_0
+      name: New Piskel (2)_0
       rect:
         serializedVersion: 2
         x: 17
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 836e343d38e792e30800000000000000
-      internalID: 4479250409046926904
+      spriteID: 43b85b559598b3430800000000000000
+      internalID: 3763752930381237044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pallet_Power Flash_1
+      name: New Piskel (2)_1
       rect:
         serializedVersion: 2
         x: 117
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3b3e25e0de8e4150800000000000000
-      internalID: 5858777193104948027
+      spriteID: a8f60838f2cd1d9f0800000000000000
+      internalID: -445332791505162358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pallet_Power Flash_2
+      name: New Piskel (2)_2
       rect:
         serializedVersion: 2
         x: 17
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7004657cd59d5650800000000000000
-      internalID: 6223295034190725244
+      spriteID: 8cb6ffa602cc58100800000000000000
+      internalID: 109718205546589128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pallet_Power Flash_3
+      name: New Piskel (2)_3
       rect:
         serializedVersion: 2
         x: 117
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7cb9614df445efc0800000000000000
-      internalID: -3466288483676865411
+      spriteID: eaa840ca001712880800000000000000
+      internalID: -8637498362619983186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pallet_Power Flash_4
+      name: New Piskel (2)_4
       rect:
         serializedVersion: 2
         x: 17
@@ -216,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63cbbb83ef0ff1780800000000000000
-      internalID: -8709978179647062986
+      spriteID: d6d14b8a598a049e0800000000000000
+      internalID: -1639124903628890771
       vertices: []
       indices: 
       edges: []
