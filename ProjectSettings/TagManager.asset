@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NormalPallet
+  - PowerPallet
+  - OutsideWall
+  - OutsideCorner
+  - JunctionT
+  - InsideWall
+  - InsideCorner
   layers:
   - Default
   - TransparentFX
@@ -14,8 +21,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Wall
+  - Background
   - 
   - 
   - 
@@ -40,4 +47,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2708935725
+    locked: 0
+  - name: Wall
+    uniqueID: 1249407141
+    locked: 0
+  - name: Pallet
+    uniqueID: 527040129
+    locked: 0
+  - name: Pac-man
+    uniqueID: 3621720433
     locked: 0
