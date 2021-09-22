@@ -8,17 +8,25 @@ public class PacmanMove : MonoBehaviour
     private AudioSource audioSource;
     private Transform Pactransform;
     private Tweener Pactweener;
+    private Animator animatorController;
     // Start is called before the first frame update
     void Start()
     {
+        //set paramaters
         this.Pactransform=gameObject.GetComponent<Transform>();
         this.Pactweener=gameObject.GetComponent<Tweener>();
         this.audioSource=GameObject.Find("/AudioSource/Pacman_Move_AudioSource").GetComponent<AudioSource>();
+        
+        //pac-man turning left animation
+        animatorController = gameObject.GetComponent<Animator>();
+        animatorController.SetBool("TurnLeft", true);
 
+        //rotate in clockwise
         GameObject tempRotateTarget = new GameObject();
         tempRotateTarget.GetComponent<Transform>().position = new Vector3 (-7,7.5f,10);
         RotateTarget = tempRotateTarget.GetComponent<Transform>();
 
+        //pass to tweener
         Pactweener.AddTween(Pactransform, Pactransform.position, RotateTarget, audioSource, 1.5f);
     }
 
