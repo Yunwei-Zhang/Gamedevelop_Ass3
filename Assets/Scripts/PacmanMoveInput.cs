@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PacmanMove : MonoBehaviour
+public class PacmanMoveInput : MonoBehaviour
 {
-    private Transform RotateTarget;
     private AudioSource audioSource;
     private Transform Pactransform;
     private Tweener Pactweener;
-    private Animator animatorController;
+    // private Animator animatorController;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,16 +17,16 @@ public class PacmanMove : MonoBehaviour
         this.audioSource=GameObject.Find("/AudioSource/Pacman_Move_AudioSource").GetComponent<AudioSource>();
         
         //pac-man turning left animation
-        animatorController = gameObject.GetComponent<Animator>();
-        animatorController.SetBool("TurnLeft", true);
+        // animatorController = gameObject.GetComponent<Animator>();
+        // animatorController.SetBool("TurnLeft", true);
 
         //rotate in clockwise
-        GameObject tempRotateTarget = new GameObject();
-        tempRotateTarget.GetComponent<Transform>().position = new Vector3 (-7,7.5f,10);
-        RotateTarget = tempRotateTarget.GetComponent<Transform>();
+        // GameObject tempRotateTarget = new GameObject();
+        // tempRotateTarget.GetComponent<Transform>().position = new Vector3 (-7,7.5f,10);
+        // RotateTarget = tempRotateTarget.GetComponent<Transform>();
 
         //pass to tweener
-        Pactweener.AddTween(Pactransform, Pactransform.position, RotateTarget, audioSource, 1.5f);
+        Pactweener.AddTween(Pactransform, Pactransform.position, audioSource, 1.5f);
     }
 
     // Update is called once per frame
