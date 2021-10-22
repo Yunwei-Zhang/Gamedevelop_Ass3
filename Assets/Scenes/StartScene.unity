@@ -1889,7 +1889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.31132078, g: 0, b: 0.08831413, a: 1}
+  m_Color: {r: 0.03033695, g: 0.008472748, b: 0.26415092, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2655,8 +2655,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -159.42664, y: 119}
-  m_SizeDelta: {x: -438.8533, y: -358}
+  m_AnchoredPosition: {x: -133.9166, y: 114}
+  m_SizeDelta: {x: -377.8332, y: -348}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1533238285
 MonoBehaviour:
@@ -2749,8 +2749,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -165.71289, y: 64.5}
-  m_SizeDelta: {x: -451.4258, y: -389}
+  m_AnchoredPosition: {x: -138.92967, y: 58.6259}
+  m_SizeDelta: {x: -387.8593, y: -377.2519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540366202
 MonoBehaviour:
@@ -2785,7 +2785,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Andy's Escaping Pac-Ghost !
+  m_Text: Escaping Pac-Ghost !
 --- !u!222 &1540366203
 CanvasRenderer:
   m_ObjectHideFlags: 0
