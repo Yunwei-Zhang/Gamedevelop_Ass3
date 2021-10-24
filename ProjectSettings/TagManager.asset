@@ -11,6 +11,7 @@ TagManager:
   - JunctionT
   - InsideWall
   - InsideCorner
+  - ExitButton
   layers:
   - Default
   - TransparentFX
