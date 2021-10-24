@@ -15,19 +15,24 @@ public class Tweener : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        // if(tween!=null){ 
-        //     tween.Target.RotateAround(tween.RotateTarget.position, -tween.Target.forward, 0.1f);
-        //     if(UpdateOnce){
-        //         tween.TargetaudioSource.Play();
-        //         UpdateOnce = false;
-        //     }
+      if(tween != null){
+        float movepersecond = (Time.time-this.tween.StartTime)/this.tween.Duration;
+        this.tween.PacStudent.position = Vector3.Lerp(tween.StartPos, tween.EndPos, movepersecond);
+
+        // if(UpdateOnce){
+        //   tween.TargetaudioSource.Play();
+        //   UpdateOnce = false;
         // }
+        // if(this.tween.PacStudent.position == tween.EndPos){
+        //   tween.TargetaudioSource.Pause();
+        // }
+      }   
     }
 
-    public void AddTween(Transform target, Vector3 startPos, AudioSource targetaudioSource, float duration){
-      if(this.tween == null){
-        tween = new Tween(target, startPos, targetaudioSource, Time.time, duration);
-      }
+    public void AddTween(Transform pacStudent, Vector3 startPos, Vector3 endpos, float duration, AudioSource targetaudioSource){
+      // if(this.tween == null){
+        tween = new Tween(pacStudent, startPos, endpos, Time.time, duration, targetaudioSource);
+        // UpdateOnce = true;
+      // }
     }
 }

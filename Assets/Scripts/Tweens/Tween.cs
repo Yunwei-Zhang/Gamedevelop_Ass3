@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Tween
 {
-    public Transform Target { set;get;  }
+    public Transform PacStudent { set;get;  }
     public Vector3 StartPos { set;get; }
+    public Vector3 EndPos { set;get; }
     public AudioSource TargetaudioSource { set;get; }
     public float StartTime { set;get; }
     public float Duration { set;get;  }
 
     public Tween(){}
 
-    public Tween(Transform target ,Vector3 startPos,AudioSource targetaudioSource , float startTime ,float duration){
-      this.Target = target;
+    public Tween(Transform pacStudent ,Vector3 startPos, Vector3 endPos, float startTime ,float duration, AudioSource targetaudioSource){
+      this.PacStudent = pacStudent;
       this.StartPos = startPos;
+      this.EndPos = endPos;
       this.TargetaudioSource = targetaudioSource;
       this.StartTime = startTime;
       this.Duration = duration;

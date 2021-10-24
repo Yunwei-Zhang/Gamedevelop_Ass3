@@ -6,7 +6,7 @@ public class LevelGenerator : MonoBehaviour
 {
     private GameObject Level1;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Level1 = GameObject.Find("Level1Layout");
         
