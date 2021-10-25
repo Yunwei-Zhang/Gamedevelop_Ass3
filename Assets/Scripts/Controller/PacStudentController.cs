@@ -13,7 +13,7 @@ public class PacStudentController : MonoBehaviour
     private Animator animatorController;
     private bool UpdateOnce = false;
     private bool CompletePixel = true;
-    //private GameObject[] Walls;
+    private GameObject[] NormalPallets;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +23,7 @@ public class PacStudentController : MonoBehaviour
         this.audioSource=GameObject.Find("/AudioSource/Pacman_Move_AudioSource").GetComponent<AudioSource>();
         this.animatorController = gameObject.GetComponent<Animator>();
 
-        // this.Walls = GameObject.FindGameObjectsWithTag("Wall");
-        // Debug.Log(Walls[0].transform.position);
+        this.NormalPallets = GameObject.FindGameObjectsWithTag("NormalPallet");
         
 
         //rotate in clockwise
@@ -105,7 +104,7 @@ public class PacStudentController : MonoBehaviour
             if(lastInput == "W"){ToDown();}
          }
 
-        
+
     }
 
     public void ToRight(){
@@ -150,5 +149,13 @@ public class PacStudentController : MonoBehaviour
         Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.5f, audioSource);
         UpdateOnce = true;
         CompletePixel = false;
+    }
+
+    void OnTriggerEnter(Collider other){
+        if(other.gameObject.CompareTag("NormalPallet"))
+        {
+          Scorer.Score += 10.0f;
+          Destroy(other.gameObject);
+        }
     }
 }

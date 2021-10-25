@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    private Text Scoretext;
+    private Text Timertext;
     private int min = 0, sec = 0, mil = 0;
     private string minprint, secprint, milprint;
     // Start is called before the first frame update
     void Start()
     {
-        Scoretext =  this.gameObject.GetComponent<Text>();
+        Timertext =  this.gameObject.GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -25,6 +25,6 @@ public class Timer : MonoBehaviour
         var i = (min>10)?(minprint = "" + min):(minprint = "0"+ min);
         var ii = (sec>10)?(secprint = "" + sec):(secprint = "0"+ sec);
         var iii = (mil>10)?(milprint = "" + mil):(milprint = "0"+ mil);
-        Scoretext.text = minprint + ":" + secprint + ":" + milprint;
+        Timertext.text = minprint + ":" + secprint + ":" + milprint;
     }
 }
