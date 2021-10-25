@@ -5,15 +5,17 @@ using UnityEngine;
 public class PacStudentController : MonoBehaviour
 {
     private AudioSource audioSource;
+    private AudioSource collisionAudioSource;
     private Transform Pactransform;
     private Tweener Pactweener;
     private Vector3 PacEndPosition;
     private string lastInput;
     private string NextInput;
     private Animator animatorController;
-    private bool UpdateOnce = false;
+    private bool UpdateOnce = false, UpdateOnce2 = true;
     private bool CompletePixel = true;
-    private GameObject[] NormalPallets;
+    private bool Walkable_D = true,Walkable_A = true,Walkable_S = true,Walkable_W = true;
+    private GameObject[] Walls;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +23,9 @@ public class PacStudentController : MonoBehaviour
         this.Pactransform=gameObject.GetComponent<Transform>();
         this.Pactweener=gameObject.GetComponent<Tweener>();
         this.audioSource=GameObject.Find("/AudioSource/Pacman_Move_AudioSource").GetComponent<AudioSource>();
+        this.collisionAudioSource=GameObject.Find("/AudioSource/Pacman_Collison").GetComponent<AudioSource>();
         this.animatorController = gameObject.GetComponent<Animator>();
-
-        this.NormalPallets = GameObject.FindGameObjectsWithTag("NormalPallet");
+        this.Walls = GameObject.FindGameObjectsWithTag("Wall");
         
 
         //rotate in clockwise
@@ -39,28 +41,28 @@ public class PacStudentController : MonoBehaviour
     void Update()
     {
         //press when complete one pixel
-        if(Input.GetKeyDown(KeyCode.D))
+        if(Input.GetKeyDown(KeyCode.D) && Walkable_D == true)
         {
             lastInput = "D";
             if(CompletePixel == true){
                 ToRight();
             }
         }
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.A) && Walkable_A == true)
         {
             lastInput = "A";
             if(CompletePixel == true){
                 ToLeft();
             }
         }
-        if(Input.GetKeyDown(KeyCode.W))
+        if(Input.GetKeyDown(KeyCode.W) && Walkable_W == true)
         {
             lastInput = "W";
             if(CompletePixel == true){
                 ToDown();
             }
         }
-        if(Input.GetKeyDown(KeyCode.S))
+        if(Input.GetKeyDown(KeyCode.S) && Walkable_S == true)
         {
             lastInput = "S";
             if(CompletePixel == true){
@@ -82,11 +84,77 @@ public class PacStudentController : MonoBehaviour
             CompletePixel = true;
          }
 
-        //  foreach (GameObject Wall in Walls){
-        //         if((Wall.transform.position + new Vector3 (-4f,10f,0f)) == Pactransform.position ){
-        //             Debug.Log("Sorry");
-        //         }
-        //     }
+         //check walls
+         foreach (GameObject Wall in Walls){
+             if(lastInput == "D"){
+                 if(Wall.transform.position  == (Pactransform.position + new Vector3(1.0f,0f,0f)) ){
+                    Walkable_D = false;
+                    if(UpdateOnce2 == true){
+                        collisionAudioSource.Play();
+                        UpdateOnce2 = false;
+                    }
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(-1.0f,0f,0f))){Walkable_A = false;}
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(0f,-1.0f,0f))){Walkable_S = false;}
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(0f,1.0f,0f))){ Walkable_W = false;}
+
+                    animatorController.SetBool("TurnRight", true);
+                    animatorController.SetBool("TurnLeft", false);
+                    animatorController.SetBool("TurnUp", false);
+                    animatorController.SetBool("TurnDown", false);
+                }
+             }
+             if(lastInput == "A"){
+                 if(Wall.transform.position  == (Pactransform.position + new Vector3(-1.0f,0f,0f)) ){
+                    Walkable_A = false;
+                    if(UpdateOnce2 == true){
+                        collisionAudioSource.Play();
+                        UpdateOnce2 = false;
+                    }
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(1.0f,0f,0f))){Walkable_D = false;}
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(0f,-1.0f,0f))){Walkable_S = false;}
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(0f,1.0f,0f))){ Walkable_W = false;}
+
+                    animatorController.SetBool("TurnLeft", true);
+                    animatorController.SetBool("TurnRight", false);
+                    animatorController.SetBool("TurnUp", false);
+                    animatorController.SetBool("TurnDown", false);
+                }
+             }
+             if(lastInput == "S"){
+                 if(Wall.transform.position  == (Pactransform.position + new Vector3(0f,-1.0f,0f)) ){
+                    Walkable_S = false;
+                    if(UpdateOnce2 == true){
+                        collisionAudioSource.Play();
+                        UpdateOnce2 = false;
+                    }
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(1.0f,0f,0f))){Walkable_D = false;}
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(-1.0f,0f,0f))){Walkable_A = false;}
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(0f,1.0f,0f))){ Walkable_W = false;}
+
+                    animatorController.SetBool("TurnUp", true);
+                    animatorController.SetBool("TurnRight", false);
+                    animatorController.SetBool("TurnLeft", false);
+                    animatorController.SetBool("TurnDown", false);
+                }
+             }
+             if(lastInput == "W"){
+                 if(Wall.transform.position  == (Pactransform.position + new Vector3(0f,1.0f,0f)) ){
+                    Walkable_W = false;
+                    if(UpdateOnce2 == true){
+                        collisionAudioSource.Play();
+                        UpdateOnce2 = false;
+                    }
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(1.0f,0f,0f))){Walkable_D = false;}
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(-1.0f,0f,0f))){Walkable_A = false;}
+                    if(Wall.transform.position  == (Pactransform.position + new Vector3(0f,-1.0f,0f))){Walkable_S = false;}
+             
+                    animatorController.SetBool("TurnDown", true);
+                    animatorController.SetBool("TurnRight", false);
+                    animatorController.SetBool("TurnLeft", false);
+                    animatorController.SetBool("TurnUp", false);
+                }
+             }
+            }
 
          //when one pixel completed, go ahead for next pixel
          if(CompletePixel == true){
@@ -98,10 +166,10 @@ public class PacStudentController : MonoBehaviour
             //     if(testwallobject.CompareTag("Wall")){Debug.Log("Stop");}
             // }
 
-            if(lastInput == "D"){ToRight();}
-            if(lastInput == "A"){ToLeft();}
-            if(lastInput == "S"){ToUp();}
-            if(lastInput == "W"){ToDown();}
+            if(lastInput == "D" && Walkable_D == true){ToRight();}
+            if(lastInput == "A" && Walkable_A == true){ToLeft();}
+            if(lastInput == "S" && Walkable_S == true){ToUp();}
+            if(lastInput == "W" && Walkable_W == true){ToDown();}
          }
 
 
@@ -115,7 +183,9 @@ public class PacStudentController : MonoBehaviour
         animatorController.SetBool("TurnDown", false);
         Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.5f, audioSource);
         UpdateOnce = true;
+        UpdateOnce2 = true;
         CompletePixel = false;
+        Walkable_D = true;Walkable_A = true;Walkable_W = true;Walkable_S = true;
     }
 
     public void ToLeft(){
@@ -126,7 +196,9 @@ public class PacStudentController : MonoBehaviour
         animatorController.SetBool("TurnDown", false);
         Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.5f, audioSource);
         UpdateOnce = true;
+        UpdateOnce2 = true;
         CompletePixel = false;
+        Walkable_D = true;Walkable_A = true;Walkable_W = true;Walkable_S = true;
     }
 
     public void ToDown(){
@@ -137,7 +209,9 @@ public class PacStudentController : MonoBehaviour
         animatorController.SetBool("TurnDown", false);
         Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.5f, audioSource);
         UpdateOnce = true;
+        UpdateOnce2 = true;
         CompletePixel = false;
+        Walkable_D = true;Walkable_A = true;Walkable_W = true;Walkable_S = true;
     }
 
     public void ToUp(){
@@ -148,7 +222,9 @@ public class PacStudentController : MonoBehaviour
         animatorController.SetBool("TurnUp", false);
         Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.5f, audioSource);
         UpdateOnce = true;
+        UpdateOnce2 = true;
         CompletePixel = false;
+        Walkable_D = true;Walkable_A = true;Walkable_W = true;Walkable_S = true;
     }
 
     void OnTriggerEnter(Collider other){
