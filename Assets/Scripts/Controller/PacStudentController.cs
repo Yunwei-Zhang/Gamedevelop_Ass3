@@ -80,7 +80,7 @@ public class PacStudentController : MonoBehaviour
         //complete one pixel
         if(Pactransform.position == PacEndPosition){
             audioSource.Pause();
-            gameObject.GetComponent<ParticleSystem>().Pause();
+            gameObject.GetComponent<ParticleSystem>().Stop();
             CompletePixel = true;
          }
 
@@ -155,6 +155,13 @@ public class PacStudentController : MonoBehaviour
                 }
              }
             }
+         //oTeleporters
+         if(Pactransform.position == new Vector3(-13.5f, 0.5f, 1f)){
+             Pactransform.position = new Vector3(13.5f, 0.5f, 1f);
+         }
+         else if(Pactransform.position == new Vector3(13.5f, 0.5f, 1f)){
+             Pactransform.position = new Vector3(-13.5f, 0.5f, 1f);
+         }
 
          //when one pixel completed, go ahead for next pixel
          if(CompletePixel == true){
@@ -181,7 +188,7 @@ public class PacStudentController : MonoBehaviour
         animatorController.SetBool("TurnLeft", false);
         animatorController.SetBool("TurnUp", false);
         animatorController.SetBool("TurnDown", false);
-        Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.5f, audioSource);
+        Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.2f, audioSource);
         UpdateOnce = true;
         UpdateOnce2 = true;
         CompletePixel = false;
@@ -194,7 +201,7 @@ public class PacStudentController : MonoBehaviour
         animatorController.SetBool("TurnRight", false);
         animatorController.SetBool("TurnUp", false);
         animatorController.SetBool("TurnDown", false);
-        Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.5f, audioSource);
+        Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.2f, audioSource);
         UpdateOnce = true;
         UpdateOnce2 = true;
         CompletePixel = false;
@@ -207,7 +214,7 @@ public class PacStudentController : MonoBehaviour
         animatorController.SetBool("TurnRight", false);
         animatorController.SetBool("TurnLeft", false);
         animatorController.SetBool("TurnDown", false);
-        Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.5f, audioSource);
+        Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.2f, audioSource);
         UpdateOnce = true;
         UpdateOnce2 = true;
         CompletePixel = false;
@@ -220,7 +227,7 @@ public class PacStudentController : MonoBehaviour
         animatorController.SetBool("TurnRight", false);
         animatorController.SetBool("TurnLeft", false);
         animatorController.SetBool("TurnUp", false);
-        Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.5f, audioSource);
+        Pactweener.AddTween(Pactransform, Pactransform.position, PacEndPosition, 0.2f, audioSource);
         UpdateOnce = true;
         UpdateOnce2 = true;
         CompletePixel = false;
@@ -233,5 +240,9 @@ public class PacStudentController : MonoBehaviour
           Scorer.Score += 10.0f;
           Destroy(other.gameObject);
         }
+         if(other.gameObject.CompareTag("Cherry")){
+            Scorer.Score += 100.0f;
+            Destroy(other.gameObject);
+         }
     }
 }

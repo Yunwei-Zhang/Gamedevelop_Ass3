@@ -13,6 +13,7 @@ TagManager:
   - InsideCorner
   - ExitButton
   - Wall
+  - Cherry
   layers:
   - Default
   - TransparentFX

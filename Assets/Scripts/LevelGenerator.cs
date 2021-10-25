@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     private GameObject Level1;
+    private AudioSource back1audioSource;
     // Start is called before the first frame update
     void Awake()
     {
@@ -16,8 +17,11 @@ public class LevelGenerator : MonoBehaviour
         Instantiate(Level1,new Vector3(0, 0, 1), Quaternion.Euler(new Vector3(0, 180, 0)));
 
         //colon the destroyed pallets
-        Instantiate(GameObject.FindWithTag("NormalPallet"),new Vector3(-7.5f,0.5f,0) ,Quaternion.identity);
-        Instantiate(GameObject.FindWithTag("NormalPallet"),new Vector3(7.5f,0.5f,0) ,Quaternion.identity);
+        Instantiate(GameObject.FindWithTag("NormalPallet"),new Vector3(-7.5f,0.5f,1f) ,Quaternion.identity);
+        Instantiate(GameObject.FindWithTag("NormalPallet"),new Vector3(7.5f,0.5f,1f) ,Quaternion.identity);
+
+        this.back1audioSource=GameObject.Find("/AudioSource/Background_1").GetComponent<AudioSource>();
+        back1audioSource.Play();
         
     }
 
