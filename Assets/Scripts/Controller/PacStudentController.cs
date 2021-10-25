@@ -12,10 +12,13 @@ public class PacStudentController : MonoBehaviour
     private string lastInput;
     private string NextInput;
     private Animator animatorController;
+    private Animator Ghost1Controller,Ghost2Controller,Ghost3Controller,Ghost4Controller;
     private bool UpdateOnce = false, UpdateOnce2 = true;
     private bool CompletePixel = true;
+    private bool PacDead = false;
     private bool Walkable_D = true,Walkable_A = true,Walkable_S = true,Walkable_W = true;
     private GameObject[] Walls;
+    private GameObject[] Lives;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +28,12 @@ public class PacStudentController : MonoBehaviour
         this.audioSource=GameObject.Find("/AudioSource/Pacman_Move_AudioSource").GetComponent<AudioSource>();
         this.collisionAudioSource=GameObject.Find("/AudioSource/Pacman_Collison").GetComponent<AudioSource>();
         this.animatorController = gameObject.GetComponent<Animator>();
+        this.Ghost1Controller = GameObject.Find("/Ghosts/Ghost1_Normal").GetComponent<Animator>();
+        this.Ghost2Controller = GameObject.Find("/Ghosts/Ghost2_Normal").GetComponent<Animator>();
+        this.Ghost3Controller = GameObject.Find("/Ghosts/Ghost3_Normal").GetComponent<Animator>();
+        this.Ghost4Controller = GameObject.Find("/Ghosts/Ghost4_Normal").GetComponent<Animator>();
         this.Walls = GameObject.FindGameObjectsWithTag("Wall");
+        
         
 
         //rotate in clockwise
@@ -40,29 +48,30 @@ public class PacStudentController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.Lives = GameObject.FindGameObjectsWithTag("Live");
         //press when complete one pixel
-        if(Input.GetKeyDown(KeyCode.D) && Walkable_D == true)
+        if(Input.GetKeyDown(KeyCode.D) && Walkable_D == true && PacDead == false)
         {
             lastInput = "D";
             if(CompletePixel == true){
                 ToRight();
             }
         }
-        if(Input.GetKeyDown(KeyCode.A) && Walkable_A == true)
+        if(Input.GetKeyDown(KeyCode.A) && Walkable_A == true && PacDead == false)
         {
             lastInput = "A";
             if(CompletePixel == true){
                 ToLeft();
             }
         }
-        if(Input.GetKeyDown(KeyCode.W) && Walkable_W == true)
+        if(Input.GetKeyDown(KeyCode.W) && Walkable_W == true && PacDead == false)
         {
             lastInput = "W";
             if(CompletePixel == true){
                 ToDown();
             }
         }
-        if(Input.GetKeyDown(KeyCode.S) && Walkable_S == true)
+        if(Input.GetKeyDown(KeyCode.S) && Walkable_S == true && PacDead == false)
         {
             lastInput = "S";
             if(CompletePixel == true){
@@ -173,10 +182,10 @@ public class PacStudentController : MonoBehaviour
             //     if(testwallobject.CompareTag("Wall")){Debug.Log("Stop");}
             // }
 
-            if(lastInput == "D" && Walkable_D == true){ToRight();}
-            if(lastInput == "A" && Walkable_A == true){ToLeft();}
-            if(lastInput == "S" && Walkable_S == true){ToUp();}
-            if(lastInput == "W" && Walkable_W == true){ToDown();}
+            if(lastInput == "D" && Walkable_D == true && PacDead == false){ToRight();}
+            if(lastInput == "A" && Walkable_A == true && PacDead == false){ToLeft();}
+            if(lastInput == "S" && Walkable_S == true && PacDead == false){ToUp();}
+            if(lastInput == "W" && Walkable_W == true && PacDead == false){ToDown();}
          }
 
 
@@ -234,15 +243,39 @@ public class PacStudentController : MonoBehaviour
         Walkable_D = true;Walkable_A = true;Walkable_W = true;Walkable_S = true;
     }
 
+    public void DieFunction(){
+        Instantiate(this.gameObject,new Vector3(-12.5f, 13.5f, 1f), Quaternion.identity);
+        Destroy(this.gameObject);
+        PacDead = false;
+        animatorController.SetBool("TurnDie", false);
+    }
+
     void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("NormalPallet"))
         {
           Scorer.Score += 10.0f;
           Destroy(other.gameObject);
         }
-         if(other.gameObject.CompareTag("Cherry")){
-            Scorer.Score += 100.0f;
-            Destroy(other.gameObject);
-         }
+        if(other.gameObject.CompareTag("Cherry")){
+          Scorer.Score += 100.0f;
+          Destroy(other.gameObject);
+        }
+        if(other.gameObject.CompareTag("PowerPallet")){
+          Ghost1Controller.SetTrigger("TurnScared");
+          Ghost2Controller.SetTrigger("TurnScared");
+          Ghost3Controller.SetTrigger("TurnScared");
+          Ghost4Controller.SetTrigger("TurnScared");
+          LevelGenerator.back1Toback2 = true;
+          ScaredTimer.startScared = true;
+          Destroy(other.gameObject);
+        }
+        if(other.gameObject.CompareTag("Ghost")){
+          PacDead = true;
+          animatorController.SetBool("TurnDie", true);
+          if(Lives.Length == 3){Destroy (GameObject.Find("/HUD/Lives/Live3"));}
+          if(Lives.Length == 2){Destroy (GameObject.Find("/HUD/Lives/Live2"));}
+          if(Lives.Length == 1){Destroy (GameObject.Find("/HUD/Lives/Live1"));}
+          Invoke("DieFunction", 2.7f);
+        }
     }
 }
