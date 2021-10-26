@@ -18,7 +18,8 @@ public class Timer : MonoBehaviour
     void Update()
     {
         //set the game timer to ensure the format correct
-        var temptime = Time.timeSinceLevelLoad;
+        var temptime = Time.timeSinceLevelLoad - 4.0f;
+        if(temptime >= 0.0f){
         min = (int)temptime/60;
         sec = (int)(temptime%60)/1;
         mil = (int)(((temptime%60) - sec)*100)/1;
@@ -26,5 +27,6 @@ public class Timer : MonoBehaviour
         var ii = (sec>10)?(secprint = "" + sec):(secprint = "0"+ sec);
         var iii = (mil>10)?(milprint = "" + mil):(milprint = "0"+ mil);
         Timertext.text = minprint + ":" + secprint + ":" + milprint;
+        }
     }
 }

@@ -25,7 +25,9 @@ public class ScaredTimer : MonoBehaviour
         }
 
         if(ScaredTimerCount <= 0){
+            ScaredTimerCount = 10.0f;
             startScared = false;
+            LevelGenerator.AudioUpdateOnce2 = true;
             ScaredTimertext.text = "";
         }     
     }

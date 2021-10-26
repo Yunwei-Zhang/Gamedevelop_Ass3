@@ -16,6 +16,7 @@ TagManager:
   - Cherry
   - Ghost
   - Live
+  - StartText
   layers:
   - Default
   - TransparentFX
