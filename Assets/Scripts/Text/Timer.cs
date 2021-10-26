@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     private Text Timertext;
-    private int min = 0, sec = 0, mil = 0;
+    private static int min = 0, sec = 0, mil = 0;
+    public static int Min { get { return min; }}
+    public static int Sec { get { return sec; }}
+    public static int Mil { get { return mil; }}
     private string minprint, secprint, milprint;
     // Start is called before the first frame update
     void Start()
@@ -19,7 +22,7 @@ public class Timer : MonoBehaviour
     {
         //set the game timer to ensure the format correct
         var temptime = Time.timeSinceLevelLoad - 4.0f;
-        if(temptime >= 0.0f){
+        if(temptime >= 0.0f && Starter.StartGame == true){
         min = (int)temptime/60;
         sec = (int)(temptime%60)/1;
         mil = (int)(((temptime%60) - sec)*100)/1;
