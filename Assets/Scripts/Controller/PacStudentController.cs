@@ -33,17 +33,7 @@ public class PacStudentController : MonoBehaviour
         this.Ghost2Controller = GameObject.Find("/Ghosts/Ghost2_Normal").GetComponent<Animator>();
         this.Ghost3Controller = GameObject.Find("/Ghosts/Ghost3_Normal").GetComponent<Animator>();
         this.Ghost4Controller = GameObject.Find("/Ghosts/Ghost4_Normal").GetComponent<Animator>();
-        this.Walls = GameObject.FindGameObjectsWithTag("Wall");
-        
-        
-
-        //rotate in clockwise
-        // GameObject tempRotateTarget = new GameObject();
-        // tempRotateTarget.GetComponent<Transform>().position = new Vector3 (-7,7.5f,10);
-        // RotateTarget = tempRotateTarget.GetComponent<Transform>();
-
-        //pass to tweener
-        
+        this.Walls = GameObject.FindGameObjectsWithTag("Wall");   
     }
 
     // Update is called once per frame
@@ -175,14 +165,6 @@ public class PacStudentController : MonoBehaviour
 
          //when one pixel completed, go ahead for next pixel
          if(CompletePixel == true){
-            
-
-            // Transform testwallobject =  Pactransform;
-            // if(lastInput == "D"){
-            //     testwallobject.position = testwallobject.position+ new Vector3(1f,0f,0f);
-            //     if(testwallobject.CompareTag("Wall")){Debug.Log("Stop");}
-            // }
-
             if(lastInput == "D" && Walkable_D == true && PacDead == false){ToRight();}
             if(lastInput == "A" && Walkable_A == true && PacDead == false){ToLeft();}
             if(lastInput == "S" && Walkable_S == true && PacDead == false){ToUp();}
@@ -281,11 +263,8 @@ public class PacStudentController : MonoBehaviour
         if(other.gameObject.CompareTag("Ghost") && ScaredTimer.startScared == true){
             other.GetComponent<Animator>().SetTrigger("TurnDead");
             Scorer.Score += 300.0f;
-            //deadghost = other.gameObject;
-            //Destroy(other.gameObject);
             LevelGenerator.back2Toghostdead = true;
             StartCoroutine(GhostDeadFunction(other.gameObject));
-            //Invoke("GhostDeadFunction", 2.0f);
         }
         if(other.gameObject.CompareTag("Ghost") && ScaredTimer.startScared == false){
           PacDead = true;

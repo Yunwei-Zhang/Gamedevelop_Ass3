@@ -7043,6 +7043,8 @@ GameObject:
   - component: {fileID: 834839548}
   - component: {fileID: 834839547}
   - component: {fileID: 834839549}
+  - component: {fileID: 834839551}
+  - component: {fileID: 834839550}
   m_Layer: 0
   m_Name: Ghost2_Normal
   m_TagString: Ghost
@@ -7148,6 +7150,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &834839550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834839545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d541e5e89191e42b8b03cc9d032f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &834839551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834839545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79f7bc5abd2d384c91f8fe58930d473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &843955153
 GameObject:
   m_ObjectHideFlags: 0
@@ -7406,6 +7432,8 @@ GameObject:
   - component: {fileID: 862990092}
   - component: {fileID: 862990091}
   - component: {fileID: 862990093}
+  - component: {fileID: 862990095}
+  - component: {fileID: 862990094}
   m_Layer: 0
   m_Name: Ghost3_Normal
   m_TagString: Ghost
@@ -7511,6 +7539,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &862990094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862990089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d541e5e89191e42b8b03cc9d032f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &862990095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862990089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79f7bc5abd2d384c91f8fe58930d473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &874009325
 GameObject:
   m_ObjectHideFlags: 0
@@ -7605,6 +7657,8 @@ GameObject:
   - component: {fileID: 874868803}
   - component: {fileID: 874868802}
   - component: {fileID: 874868805}
+  - component: {fileID: 874868806}
+  - component: {fileID: 874868807}
   m_Layer: 0
   m_Name: Ghost1_Normal
   m_TagString: Ghost
@@ -7690,7 +7744,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874868801}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1311181331}
@@ -7710,6 +7764,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &874868806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874868801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79f7bc5abd2d384c91f8fe58930d473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &874868807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874868801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d541e5e89191e42b8b03cc9d032f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &882971023
 GameObject:
   m_ObjectHideFlags: 0
@@ -22258,6 +22336,8 @@ GameObject:
   - component: {fileID: 2033280009}
   - component: {fileID: 2033280008}
   - component: {fileID: 2033280010}
+  - component: {fileID: 2033280012}
+  - component: {fileID: 2033280011}
   m_Layer: 0
   m_Name: Ghost4_Normal
   m_TagString: Ghost
@@ -22273,7 +22353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033280006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 2136366480}
@@ -22363,6 +22443,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2033280011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033280006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d541e5e89191e42b8b03cc9d032f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2033280012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033280006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79f7bc5abd2d384c91f8fe58930d473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2047728850
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,7 +34,6 @@ public class Starter : MonoBehaviour
         this.Lives = GameObject.FindGameObjectsWithTag("Live");
         this.Pallets_Normal = GameObject.FindGameObjectsWithTag("NormalPallet");
         this.Pallets_Special = GameObject.FindGameObjectsWithTag("PowerPallet");
-        Debug.Log(Lives.Length);
         //game over
         if(Lives.Length == 0 || (Pallets_Normal.Length + Pallets_Special.Length) == 0){
             Debug.Log("Dead");
