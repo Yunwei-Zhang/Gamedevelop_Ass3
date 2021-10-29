@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class UIMamager : MonoBehaviour
 {
+    private AudioSource dooraudioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.dooraudioSource=GameObject.Find("/Level1ButtonAudioSource").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -18,11 +19,16 @@ public class UIMamager : MonoBehaviour
         
     }
 
-    public void LoadLevel1()
-    {
+    public void ToLevel1(){
         SceneManager.LoadScene("Level1");
         DontDestroyOnLoad(this.gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public void LoadLevel1()
+    {
+        dooraudioSource.Play();
+        Invoke("ToLevel1", 3.0f);
     }
 
     public void ExitGame()
